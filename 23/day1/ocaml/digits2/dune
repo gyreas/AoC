@@ -1,0 +1,3 @@
+(executable
+  (name      digits2)
+  (libraries str))
