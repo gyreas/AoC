@@ -17,13 +17,16 @@ let digitword =
     ("nine" , '9');
   ]
 
+in
 let to_match = {|one\|two\|three\|four\|five\|six\|seven\|eight\|nine|}
 
+in
 let isdigit c = match c with
   | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' 
       -> true
   | _ -> false 
 
+in
 let isempty s = equal empty s 
 
 (* The main work horse.
@@ -34,6 +37,7 @@ let isempty s = equal empty s
   4. convert the concatenation of d1 to d2 (in that order), to an integer
   5. return
 *)
+in
 let twodigits s =
   if isempty s then 0 
   else 
@@ -48,10 +52,13 @@ let twodigits s =
           let ch = subs.[0] in
           let len = length subs in
           (* If we found a digit 0-9 *)
+          let next_subs =  sub subs 1 (len - 1)  in
 
           if (isdigit ch) then begin
             if (isempty d1) then
+              let d1 = make 1 ch in trav d1 d2 next_subs
             else 
+              let d2 = make 1 ch in trav d1 d2 next_subs
           end
 
           (* Process it by word *)
@@ -68,13 +75,19 @@ let twodigits s =
                  - 1 because we're considering string overlaps
               *)
               let e = match_end () - 1 in
+              let next_subs = (sub subs e l) in
 
               if (isempty d1) then
+                let d1 = make 1 ch in trav d1 d2 next_subs
               else 
+                let d2 = make 1 ch in trav d1 d2 next_subs
             else 
+                trav d1 d2 next_subs
 
+  in trav "" "" s
 (* End of twodigits *)
 
+in
 let parse_sum acc line =  (twodigits line) + acc in
 
 (* [fold_lines f acc ch] applies a folding operation on the lines in [ch]
