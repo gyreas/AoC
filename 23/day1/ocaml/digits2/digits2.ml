@@ -17,7 +17,6 @@ let digitword =
     ("nine" , '9');
   ]
 
-
 let to_match = {|one\|two\|three\|four\|five\|six\|seven\|eight\|nine|}
 
 let isdigit c = match c with
@@ -49,13 +48,10 @@ let twodigits s =
           let ch = subs.[0] in
           let len = length subs in
           (* If we found a digit 0-9 *)
-          let subn =  sub subs 1 (len - 1)  in
 
           if (isdigit ch) then begin
             if (isempty d1) then
-              let d1 = make 1 ch in trav d1 d2 subn
             else 
-              let d2 = make 1 ch in trav d1 d2 subn
           end
 
           (* Process it by word *)
@@ -72,17 +68,11 @@ let twodigits s =
                  - 1 because we're considering string overlaps
               *)
               let e = match_end () - 1 in
-              let subn = (sub subs e l) in
-               (*let _ = printf "str:%s, s:%s, ss:%s\n" subs digit subn in*)
 
               if (isempty d1) then
-                let d1 = make 1 ch in trav d1 d2 subn
               else 
-                let d2 = make 1 ch in trav d1 d2 subn
             else 
-                trav d1 d2 subn
 
-  in trav "" "" s;;
 (* End of twodigits *)
 
 let parse_sum acc line =  (twodigits line) + acc in
@@ -99,4 +89,3 @@ in
 let file = open_in Sys.argv.(1) in
   let res = fold_lines parse_sum 0 file in
     printf "Sum: %d\n" res
-(*fold_lines twodigits' () file*)
