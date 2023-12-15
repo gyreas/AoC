@@ -1,0 +1,24 @@
+(lang dune 3.10)
+
+(name game1)
+
+(source
+ (github gyreas/AoC))
+
+(authors "Saheed Adeleye")
+
+(maintainers "Saheed Adeleye")
+
+(license BSD-2)
+
+(documentation https://github.com/gyreas/AoC/README)
+
+(package
+ (name game1)
+ (synopsis "Solution to Day 2 of Advent of Code 2023: Cube Conundrum")
+ (description 
+   "Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. 
+    What is the sum of the IDs of those games?")
+ (depends ocaml dune)
+ (tags
+  (aoc2023 december christmas advent-of-code advent ocaml parsing)))
