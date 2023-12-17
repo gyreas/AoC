@@ -1,4 +1,4 @@
-open Game1
+open Game1.Utils
 open Printf
 
 let main _ =
