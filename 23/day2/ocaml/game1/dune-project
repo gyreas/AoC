@@ -11,7 +11,7 @@
 
 (license BSD-2)
 
-(documentation https://github.com/gyreas/AoC/README)
+(documentation https://github.com/gyreas/AoC/23/day2/ocaml/game1/README)
 
 (package
  (name game1)
